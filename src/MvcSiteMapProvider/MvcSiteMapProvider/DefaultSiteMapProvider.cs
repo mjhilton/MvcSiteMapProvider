@@ -84,6 +84,12 @@ namespace MvcSiteMapProvider
         public ISiteMapNodeVisibilityProvider SiteMapNodeVisibilityProvider { get; set; }
 
         /// <summary>
+        /// Gets or sets the site map node dynamic title provider.
+        /// </summary>
+        /// <value>The site map node dynamic title provider.</value>
+        public ISiteMapNodeDynamicTitleProvider SiteMapNodeDynamicTitleProvider { get; set; }
+
+        /// <summary>
         /// Gets or sets the site map provider event handler.
         /// </summary>
         /// <value>The site map provider event handler.</value>
@@ -1438,6 +1444,12 @@ namespace MvcSiteMapProvider
                 siteMapNode.VisibilityProvider = this.SiteMapNodeVisibilityProvider;
             }
 
+            // Add defaults for SiteMapNodeDynamicTitleProvider
+            if (siteMapNode.DynamicTitleProvider == null)
+            {
+                siteMapNode.DynamicTitleProvider = this.SiteMapNodeDynamicTitleProvider;
+            }
+
             // Clickable?
             if (!siteMapNode.Clickable)
             {
@@ -1513,6 +1525,7 @@ namespace MvcSiteMapProvider
                     && attributeName != "dynamicNodeProvider"
                     && attributeName != "urlResolver"
                     && attributeName != "visibilityProvider"
+                    && attributeName != "dynamicTitleProvider"
                     && attributeName != "lastModifiedDate"
                     && attributeName != "changeFrequency"
                     && attributeName != "updatePriority"
@@ -1635,6 +1648,7 @@ namespace MvcSiteMapProvider
             siteMapNode["dynamicNodeProvider"] = attribute.DynamicNodeProvider;
             siteMapNode["urlResolver"] = attribute.UrlResolver;
             siteMapNode["visibilityProvider"] = attribute.VisibilityProvider;
+            siteMapNode["dynamicTitleProvider"] = attribute.DynamicTitleProvider;
             siteMapNode.LastModifiedDate = attribute.LastModifiedDate;
             siteMapNode.ChangeFrequency = attribute.ChangeFrequency;
             siteMapNode.UpdatePriority = attribute.UpdatePriority;
@@ -1666,6 +1680,12 @@ namespace MvcSiteMapProvider
             if (siteMapNode.VisibilityProvider == null)
             {
                 siteMapNode.VisibilityProvider = this.SiteMapNodeVisibilityProvider;
+            }
+
+            // Add defaults for SiteMapNodeDynamicTitleProvider
+            if (siteMapNode.DynamicTitleProvider == null)
+            {
+                siteMapNode.DynamicTitleProvider = this.SiteMapNodeDynamicTitleProvider;
             }
 
             // Clickable?

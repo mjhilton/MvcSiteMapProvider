@@ -244,6 +244,41 @@ namespace MvcSiteMapProvider
             }
         }
 
+        ISiteMapNodeDynamicTitleProvider dynamicTitleProvider;
+
+        /// <summary>
+        /// Gets or sets the dynamic title provider.
+        /// </summary>
+        /// <value>The dynamic title provider.</value>
+        public ISiteMapNodeDynamicTitleProvider DynamicTitleProvider
+        {
+            get
+            {
+                if (!string.IsNullOrEmpty(this["dynamicTitleProvider"]))
+                {
+                    if (dynamicTitleProvider == null)
+                    {
+                        dynamicTitleProvider = Activator.CreateInstance(
+                            Type.GetType(this["dynamicTitleProvider"])) as ISiteMapNodeDynamicTitleProvider;
+                    }
+                    return dynamicTitleProvider;
+                }
+                return null;
+            }
+            set
+            {
+                dynamicTitleProvider = value;
+                if (value != null)
+                {
+                    this["dynamicTitleProvider"] = value.GetType().AssemblyQualifiedName;
+                }
+                else
+                {
+                    this["dynamicTitleProvider"] = null;
+                }
+            }
+        }
+
         /// <summary>
         /// Gets or sets the preserved route parameter names (= values that will be used from the current request route).
         /// </summary>

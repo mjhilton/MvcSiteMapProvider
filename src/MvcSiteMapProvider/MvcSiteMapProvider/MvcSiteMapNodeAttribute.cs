@@ -89,6 +89,12 @@ namespace MvcSiteMapProvider
         public string VisibilityProvider { get; set; }
 
         /// <summary>
+        /// Gets or sets the dynamic title provider.
+        /// </summary>
+        /// <value>The dynamic title provider.</value>
+        public string DynamicTitleProvider { get; set; }
+
+        /// <summary>
         /// Used for ordering nodes
         /// </summary>
         public int Order { get; set; }

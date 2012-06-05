@@ -145,6 +145,15 @@
         </xs:documentation>
       </xs:annotation>
     </xs:attribute>
+
+    <xs:attribute name="dynamicTitleProvider" type="xs:string" use="optional" >
+      <xs:annotation>
+        <xs:documentation>
+          Class that will be used to determine title at display-time for a sitemap node.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    
     <xs:attribute name="targetFrame" type="xs:string" use="optional">
       <xs:annotation>
         <xs:documentation>
