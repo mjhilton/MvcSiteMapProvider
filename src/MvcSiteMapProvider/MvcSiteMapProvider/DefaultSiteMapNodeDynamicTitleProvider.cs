@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Mvc;
 using MvcSiteMapProvider.Extensibility;
 
 namespace MvcSiteMapProvider
@@ -10,7 +11,7 @@ namespace MvcSiteMapProvider
     class DefaultSiteMapNodeDynamicTitleProvider
         : ISiteMapNodeDynamicTitleProvider
     {
-        public string GetTitle(SiteMapNode node, HttpContext context, IDictionary<string, object> sourceMetadata)
+        public string GetTitle(SiteMapNode node, ViewDataDictionary viewData, IDictionary<string, object> sourceMetadata)
         {
             return node.Title;
         }

@@ -68,9 +68,9 @@ namespace MvcSiteMapProvider.Web.Html
                 {
                     nodeVisible = mvcNode.VisibilityProvider.IsVisible(
                         node, HttpContext.Current, SourceMetadata);
-
+                    
                     node.Title = mvcNode.DynamicTitleProvider.GetTitle(
-                        node, HttpContext.Current, SourceMetadata);
+                        node, helper.HtmlHelper.ViewData, SourceMetadata);
                 }
 
                 // Check ACL

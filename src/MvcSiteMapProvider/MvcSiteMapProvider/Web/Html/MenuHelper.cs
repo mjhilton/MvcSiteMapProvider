@@ -373,7 +373,7 @@ namespace MvcSiteMapProvider.Web.Html
                     node, HttpContext.Current, SourceMetadata);
 
                 node.Title = mvcNode.DynamicTitleProvider.GetTitle(
-                    node, HttpContext.Current, SourceMetadata);
+                    node, helper.HtmlHelper.ViewData, SourceMetadata);
             }
 
             // Check ACL
